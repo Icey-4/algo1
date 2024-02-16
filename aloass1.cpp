@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ public:
 	void search();
 	void fileRead();
 	void suffering();
-	void sort();
+	void order();
 	vector <string> v;
 	string myText;
 	string myLine;
@@ -30,10 +31,11 @@ private:
 	string Price;
 	string Cat;
 	int changeLine;
+	vector <float> pice;
 };
 
-void Pain::fileRead(){
-	
+void Pain::fileRead() {
+
 	myFile.open("product_data.txt");
 
 	if (myFile.is_open())
@@ -54,10 +56,10 @@ void Pain::fileRead(){
 				}
 				if (x == 4)
 				{
-					x = 0;				
+					x = 0;
 					y++;
 				}
-	
+
 				help[y][x] = v[i];
 				x++;
 				i++;
@@ -68,7 +70,10 @@ void Pain::fileRead(){
 	{
 		cout << "not open";
 	}
-	
+	for (int i = 0; i < addnew; i++) {
+		pice.push_back(stof(help[i][2]));
+		
+	}
 }
 void Pain::add() {
 	
@@ -153,72 +158,31 @@ void Pain::suffering() {
 }
 
 
-void swap(int* a, int* b) {
-	int t = *a;
-	*a = *b;
-	*b = t;
-}
-
-	// function to rearrange array (find the partition point)
-int partition(int array[], int low, int high) {
-
-		// select the rightmost element as pivot
-	int pivot = array[high];
-
-		// pointer for greater element
-	int i = (low - 1);
-
-		// traverse each element of the array
-		// compare them with the pivot
-		for (int j = low; j < high; j++) {
-			if (array[j] <= pivot) {
-
-				// if element smaller than pivot is found
-				// swap it with the greater element pointed by i
-				i++;
-
-				// swap element at i with element at j
-				swap(&array[i], &array[j]);
+void Pain::order() {
+	string huuu[70][4];
+	int arrr [70]
+	int j = 0;
+	sort(pice.begin(), pice.end());
+	for (int i = 0; i < addnew;) 
+	{
+		x = 0;
+		if (pice.begin() == stof(help[i][2]))
+		{
+			while (x < 4) 
+			{
+				huuu[i][x] = help[i][x];
+				x++;
 			}
+			i++;
 		}
-
-		// swap pivot with the greater element at i
-		swap(&array[i + 1], &array[high]);
-
-		// return the partition point
-		return (i + 1);
-	}
-
-	void quickSort(int array[], int low, int high) {
-		if (low < high) {
-
-			// find the pivot element such that
-			// elements smaller than pivot are on left of pivot
-			// elements greater than pivot are on righ of pivot
-			int pi = partition(array, low, high);
-
-			// recursive call on the left of pivot
-			quickSort(array, low, pi - 1);
-
-			// recursive call on the right of pivot
-			quickSort(array, pi + 1, high);
+		else
+		{
+			j++;
 		}
 	}
-
-	// Driver code
-void sad() {
-	int data[] = { 8, 7, 6, 1, 0, 9, 2 };
-	int n = sizeof(data) / sizeof(data[0]);
-
-	cout << "Unsorted Array: \n";
-	//printArray(data, n);
-
-		// perform quicksort on data
-	quickSort(data, 0, n - 1);
-
-	cout << "Sorted array in ascending order: \n";
-	//printArray(data, n);
+	cout << huuu;
 }
+
 
 int main(){
 	Pain pain;
@@ -254,6 +218,10 @@ int main(){
 		case 5:
 			pain.search();
 			break;
+		case 6:
+			pain.order();
+			break;
+
 		default:
 			std::cout << "\nSorry, but " << choice << " is not a valid choice.\n";
 		}
