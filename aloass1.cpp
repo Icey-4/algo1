@@ -158,30 +158,30 @@ void Pain::suffering() {
 }
 
 
-void Pain::order() {
-	string huuu[70][4];
-	int arrr [70]
-	int j = 0;
-	sort(pice.begin(), pice.end());
-	for (int i = 0; i < addnew;) 
-	{
-		x = 0;
-		if (pice.begin() == stof(help[i][2]))
-		{
-			while (x < 4) 
-			{
-				huuu[i][x] = help[i][x];
-				x++;
-			}
-			i++;
-		}
-		else
-		{
-			j++;
-		}
-	}
-	cout << huuu;
-}
+//void Pain::order() {
+	//string huuu[70][4];
+	//int arrr [70]
+	//int j = 0;
+	//sort(pice.begin(), pice.end());
+	//for (int i = 0; i < addnew;) 
+	//{
+	//	x = 0;
+	//	if (pice.begin() == stof(help[i][2]))
+	//	{
+	//		while (x < 4) 
+	//		{
+	//			huuu[i][x] = help[i][x];
+	//			x++;
+	//		}
+	//		i++;
+	//	}
+	//	else
+	//	{
+	//		j++;
+	//	}
+	//}
+	//cout << huuu;
+//}
 
 
 int main(){
